@@ -1,0 +1,25 @@
+# Created by https://www.gitignore.io/api/linux,django
+
+### Django ###
+*.log
+*.pot
+*.pyc
+__pycache__/
+db.sqlite3
+media
+
+# If your build process includes running collectstatic, then ...
+
+# [WRANING] Settings file on local env
+local_settings.py
+
+# [WARNING] Secret keys file
+env.py
+
+
+# pyenv / pyenv-virtualenv
+.python-version
+
+# Editor / IDE
+.vscode/
+
