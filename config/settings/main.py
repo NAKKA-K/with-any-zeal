@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -128,6 +130,12 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 STATICFILES_ROOT = os.path.join(BASE_DIR, 'asset')
+
+# Login settings
+LOGIN_REDIRECT_UTL = '/'
+
+# User settings
+AUTH_USER_MODEL = 'accounts.User'
 
 
 # Local settings
