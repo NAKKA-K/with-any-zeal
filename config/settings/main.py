@@ -44,6 +44,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # lib
+    'django-debug-toolbar',
+    'bootstrap4',
+
+    # app
     'accounts',
 ]
 
