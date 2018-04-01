@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # lib
-    'django-debug-toolbar',
+    'debug_toolbar',
     'bootstrap4',
 
     # app
@@ -60,6 +60,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # DEBUG_TOOLBAR_CONFIG はページ下部
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -148,3 +151,10 @@ try:
     from .local_settings import *
 except ImportError:
     print("[Info] local_settingsが存在しません")
+
+try:
+    from .debug_toolbar_conf import *
+except ImportError:
+    raise ImportError("[Error] debug_toolbarのコンフィグファイルが読み込めません")
+
+
