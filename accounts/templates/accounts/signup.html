@@ -2,10 +2,21 @@
 {% load bootstrap4 %}
 
 {% block content %}
-    <h1>Sign up</h1>
-    <form method="POST" class="mt-4">
-        {% csrf_token %}
-        {% bootstrap_form form %}
-        <button type="submit" class="btn btn-primary btn-lg">Sign up</button>
-    </form>
+    <div class="row justify-content-center mt-4">
+        <div class="card">
+
+            <h1 class="card-header text-center">Sign up</h1>
+
+            <form method="POST" class="card-block m-4">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Sign up</button>
+            </form>
+
+            <div class="card-footer">
+                <p><a href="{% url 'login' %}">既にアカウントを持っている方はこちら</a></p>
+            </div>
+
+        </div>
+    </div>
 {% endblock content %}
