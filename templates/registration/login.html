@@ -3,15 +3,13 @@
 
 {% block content %}
 <div class="row justify-content-center mt-4">
-    <div class="col-sm-8 col-md-5">
+    <div class="col-12 col-sm-10 col-md-5">
         <div class="card">
 
-            <div class="card-header">
-                <h3 class="text-center">Log in</h3>
-            </div>
+            <h3 class="card-header text-center">Log in</h3>
 
             <div class="card-block">
-                <form role="form" action="{% url 'login' %}" method="POST" class="m-4">
+                <form role="form" method="POST" class="m-4">
                     {% csrf_token %}
                     {% bootstrap_form form  %}
 
@@ -22,7 +20,7 @@
                 </form>
 
                 <div class="card-footer">
-                    <p><a href="">パスワードを忘れましたか？</a></p>
+                    <p><a href="{% url 'accounts:signup' %}">パスワードを忘れましたか？</a></p>
                 </div>
             </div>
 
