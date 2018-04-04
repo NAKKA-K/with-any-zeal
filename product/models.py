@@ -20,11 +20,23 @@ class Event(models.Model):
 
 class EventJoin(models.Model):
     """ イベント参加テーブル """
-    event = models.ForeignKey(Event, verbose_name = _('イベント'))
-    user = models.ForeignKey(settins.AUTH_USER_MODEL, _('ユーザー'))
+    event = models.ForeignKey(
+        Event,
+        verbose_name = _('イベント'),
+        on_delete = models.CASCADE    
+    )
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        verbose_name = _('ユーザー'),
+        on_delete = models.CASCADE
+    )
 
 
 class EventSkillTag(models.Model):
     """ イベント技術タグテーブル """
-    event = models.ForeignKey(Event, verbose_name = _('イベント'))
+    event = models.ForeignKey(
+        Event,
+        verbose_name = _('イベント'),
+        on_delete = models.CASCADE
+    )
     tag = models.CharField(_('技術タグ'), max_length = 16)
