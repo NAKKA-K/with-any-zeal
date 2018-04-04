@@ -5,6 +5,6 @@ from product import views
 app_name = 'product'
 
 urlpatterns = [
-    path('', EventListView.as_view(), name="event_list"),
+    path('', views.EventListView.as_view(), name="event_list"),
 ]
 
