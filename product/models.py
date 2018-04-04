@@ -17,6 +17,9 @@ class Event(models.Model):
     readme = models.TextField(_('説明'))
     published_date = models.DateTimeField(_('公開日'), null = True)
 
+    def __str__(self):
+        return self.name
+
 
 class EventJoin(models.Model):
     """ イベント参加テーブル """
@@ -31,6 +34,9 @@ class EventJoin(models.Model):
         on_delete = models.CASCADE
     )
 
+    def __str__(self):
+        return self.name
+
 
 class EventSkillTag(models.Model):
     """ イベント技術タグテーブル """
@@ -40,3 +46,7 @@ class EventSkillTag(models.Model):
         on_delete = models.CASCADE
     )
     tag = models.CharField(_('技術タグ'), max_length = 16)
+
+    def __str__(self):
+        return self.name
+
