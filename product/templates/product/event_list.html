@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h1 class="m-4">イベント一覧</h1>
+
+    {% for object in events %}
+        <div class="card mb-2"><a href="">
+            <h4 class="card-header">{{ object.name }}</h4>
+            <p>{{ object.description }}</p>
+        </a></div>
+    {% endfor %}
+{% endblock content %}
