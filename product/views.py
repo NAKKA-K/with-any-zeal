@@ -4,6 +4,8 @@ from django.contrib import messages
 from django.views.generic import ListView
 from django.views.generic import CreateView
 from django.views.generic import UpdateView
+from django.views.generic import DetailView
+from django.views.generic import DeleteView
 
 from product.models import Event
 
@@ -43,3 +45,11 @@ class EventUpdateView(UpdateView):
     def form_valid(self, form):
         messages.success(self.request, 'イベント: 「{}」を更新しました'.format(form.instance))
         return super().form_valid(form)
+
+
+class EventDetailView(DetailView):
+    """ Detail of Event model """
+
+    model = Event
+    template_name = 'product/event_detail.html'
+    context_object_name = 'event'
