@@ -13,7 +13,7 @@
 
     {% for event in events %}
         <div class="card mb-2">
-            <a href="{% url 'product:event_create' %}"><h4 class="card-header">{{ event.name }}</h4></a>
+            <a href="{% url 'product:event_detail' event.pk %}"><h4 class="card-header">{{ event.name }}</h4></a>
             <p class="card-text m-2">{{ event.description }}</p>
         </div>
     {% endfor %}
