@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.shortcuts import redirect
+from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.views.generic import ListView
@@ -53,3 +55,12 @@ class EventDetailView(DetailView):
     model = Event
     template_name = 'product/event_detail.html'
     context_object_name = 'event'
+
+
+class EventDeleteView(DeleteView):
+    """ Delete of Event model """
+
+    def get(self, request, **kwargs):
+        event = get_object_or_404(Event, pk = kwargs['pk'])
+        event.delete()
+        return redirect('product:event_list')
