@@ -27,8 +27,11 @@
             {% endif %}
         </p>
     </div>
-    <a href="{% url 'product:event_update' event.pk %}" class="btn btn-primary btn-sm">更新</a>
-    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_modal">削除</button>
+
+    {% if user == event.create_user %}
+        <a href="{% url 'product:event_update' event.pk %}" class="btn btn-primary btn-sm">更新</a>
+        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_modal">削除</button>
+    {% endif %}
 
     <p class="mb-4">{{ event.description }}</p>
     <hr>
