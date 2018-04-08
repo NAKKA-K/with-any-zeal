@@ -15,6 +15,9 @@
 
 
 {% block content %}
+    <a href="{% url 'product:event_list' %}" class="btn btn-outline-secondary btn-sm mt-4">戻る</a>
+    <hr>
+
     <h6 class="mt-4">作成者:{{ event.create_user }}</h6>
     <div class="mt-2 mb-2">
         <h1 class="inline mr-2">{{ event.name }}</h1>
@@ -27,7 +30,11 @@
             {% endif %}
         </p>
     </div>
-    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_modal">削除</button>
+
+    {% if user == event.create_user %}
+        <a href="{% url 'product:event_update' event.pk %}" class="btn btn-primary btn-sm">更新</a>
+        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_modal">削除</button>
+    {% endif %}
 
     <p class="mb-4">{{ event.description }}</p>
     <hr>
