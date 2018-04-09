@@ -7,11 +7,15 @@
     font-weight: bold;
     color: gray;
 }
+.user-font {
+    font-weight: bold;
+    color: green;
+}
 </style>
 {% endblock head %}
 
 {% block content %}
-    <h1 class="m-4">{{ user_name }} Profile</h1>
+    <h1 class="m-4"><span class="user-font">{{ user_name }}</span> Profile</h1>
     
     <ul class="nav nav-tabs mb-4">
         <li class="nav-item">
