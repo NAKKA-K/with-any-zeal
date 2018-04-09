@@ -1,0 +1,8 @@
+.inline {
+    display: inline-block;
+}
+.published-status {
+    display: inline-block;
+    color: gray;
+    font-size: 1rem;
+}
