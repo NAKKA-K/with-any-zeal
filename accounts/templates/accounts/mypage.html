@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <link href="{% static 'accounts/css/mypage_fonts.css' %}" rel="stylesheet">
+{% endblock head %}
+
+
+{% block content %}
+    <h1 class="m-4">MyPage</h1>
+
+    <div class="card border-light">
+        <h5 class="card-header">Name</h5>
+        <div class="card-body status_font">
+            {{ user.username }}
+        </div>
+    </div>
+    <div class="card border-light">
+        <h5 class="card-header">Email</h5>
+        <div class="card-body status_font">
+            {{ user.email }}
+        </div>
+    </div>
+
+{% endblock content %}
