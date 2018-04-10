@@ -141,7 +141,8 @@ STATICFILES_DIRS = (
 STATICFILES_ROOT = os.path.join(BASE_DIR, 'asset')
 
 # Login settings
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/product/'
+LOGOUT_REDIRECT_URL = '/product/'
 
 # User settings
 AUTH_USER_MODEL = 'accounts.User'
