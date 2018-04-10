@@ -39,15 +39,22 @@
             </ul>
 
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" id="navbar_dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="user-font">{{ user.username }}</span>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbar_dropdown">
-                        <a class="dropdown-item" href="{% url 'accounts:profile' user.username %}">プロフィール</a>
-                        <a class="dropdown-item" href="{% url 'accounts:mypage' %}">マイページ</a>
-                    </div>
-                </li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="navbar_dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="user-font">{{ user.username }}</span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbar_dropdown">
+                            <a class="dropdown-item" href="{% url 'accounts:profile' user.username %}">プロフィール</a>
+                            <a class="dropdown-item" href="{% url 'accounts:mypage' %}">マイページ</a>
+                            <a class="dropdown-item" href="{% url 'logout' %}">ログアウト</a>
+                        </div>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">ログイン</a>
+                    </li>
+                {% endif %}
             </ul>
 
         </div> <!-- navbar-collapse -->
