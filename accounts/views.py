@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.http import Http404
 from django.views.generic import CreateView
@@ -53,3 +55,11 @@ class ProfileView(ListView):
         context['join_events'] = product.EventJoin.objects\
                                  .filter(user = user)
         return context
+
+
+# Print messages when not logged in
+class LoginRequiredMessageMixin(LoginRequiredMixin):
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            messages.error(request, 'このページにアクセスするにはログインが必要です')
+        return super().dispatch(request, *args, **kwargs)
