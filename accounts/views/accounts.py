@@ -8,7 +8,7 @@ from django.views.generic import ListView
 
 from product import models as product
 from accounts.models import User
-from accounts.views import LoginRequiredMessageMixin
+from accounts.views.LoginRequiredMessageMixin import LoginRequiredMessageMixin
 
 # Create your views here.
 class SignUpView(CreateView):
