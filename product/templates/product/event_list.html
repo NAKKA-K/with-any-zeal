@@ -9,12 +9,14 @@
 {% block content %}
     <a href="{% url 'product:event_create' %}" class="event-button btn btn-primary">イベントを作成</a>
 
-    <h1 class="m-4 no-float">イベント一覧</h1>
+    <h1 class="mt-4 mb-4 ml-2 mr-2 no-float">イベント一覧</h1>
 
     {% for event in events %}
-        <div class="card mb-2">
+        <div class="card border-secondary mb-2">
             <a href="{% url 'product:event_detail' event.pk %}"><h4 class="card-header">{{ event.name }}</h4></a>
-            <p class="card-text m-2">{{ event.description }}</p>
+            <div class="card-body">
+                {{ event.description }}
+            </div>
         </div>
     {% endfor %}
 {% endblock content %}
