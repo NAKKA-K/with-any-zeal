@@ -11,6 +11,14 @@ from django.views.generic import ListView
 from product import models as product
 from accounts.models import User
 
+# Print messages when not logged in
+class LoginRequiredMessageMixin(LoginRequiredMixin):
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            messages.error(request, 'このページにアクセスするにはログインが必要です')
+        return super().dispatch(request, *args, **kwargs)
+
+
 # Create your views here.
 class SignUpView(CreateView):
     form_class = UserCreationForm
@@ -18,7 +26,7 @@ class SignUpView(CreateView):
     template_name = 'accounts/signup.html'
 
 
-class MypageView(TemplateView):
+class MypageView(LoginRequiredMessageMixin, TemplateView):
     template_name = 'accounts/mypage.html'
 
 
@@ -56,10 +64,3 @@ class ProfileView(ListView):
                                  .filter(user = user)
         return context
 
-
-# Print messages when not logged in
-class LoginRequiredMessageMixin(LoginRequiredMixin):
-    def dispatch(self, request, *args, **kwargs):
-        if not request.user.is_authenticated:
-            messages.error(request, 'このページにアクセスするにはログインが必要です')
-        return super().dispatch(request, *args, **kwargs)
