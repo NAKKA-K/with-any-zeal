@@ -1,7 +1,5 @@
 from django.shortcuts import render
-from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.http import Http404
 from django.views.generic import CreateView
@@ -10,14 +8,7 @@ from django.views.generic import ListView
 
 from product import models as product
 from accounts.models import User
-
-# Print messages when not logged in
-class LoginRequiredMessageMixin(LoginRequiredMixin):
-    def dispatch(self, request, *args, **kwargs):
-        if not request.user.is_authenticated:
-            messages.error(request, 'このページにアクセスするにはログインが必要です')
-        return super().dispatch(request, *args, **kwargs)
-
+from accounts.views import LoginRequiredMessageMixin
 
 # Create your views here.
 class SignUpView(CreateView):
