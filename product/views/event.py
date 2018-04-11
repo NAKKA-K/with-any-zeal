@@ -10,7 +10,7 @@ from django.views.generic import DetailView
 from django.views.generic import DeleteView
 
 from product.models import Event
-
+from accounts.views import LoginRequiredMessageMixin 
 
 # Create your views here.
 
@@ -22,7 +22,7 @@ class EventListView(ListView):
     context_object_name = 'events'
 
 
-class EventCreateView(CreateView):
+class EventCreateView(LoginRequiredMessageMixin, CreateView):
     """ Create of Event model """
 
     model = Event
@@ -36,13 +36,20 @@ class EventCreateView(CreateView):
         return super().form_valid(form)
 
 
-class EventUpdateView(UpdateView):
+class EventUpdateView(LoginRequiredMessageMixin, UpdateView):
     """ Update of Event model """
 
     model = Event
     fields = ('name', 'description', 'readme')
     template_name = 'product/event_form.html'
     success_url = reverse_lazy('product:event_list')
+
+    def get(self, request, **kwargs):
+        event = get_object_or_404(Event, pk = kwargs['pk'])
+        if event.create_user != request.user:
+            messages.info(self.request, 'イベント作成者以外は編集できません')
+            return redirect('login')
+        return super().get(request, **kwargs)
 
     def form_valid(self, form):
         messages.success(self.request, 'イベント: 「{}」を更新しました'.format(form.instance))
@@ -57,10 +64,13 @@ class EventDetailView(DetailView):
     context_object_name = 'event'
 
 
-class EventDeleteView(DeleteView):
+class EventDeleteView(LoginRequiredMessageMixin, DeleteView):
     """ Delete of Event model """
 
     def get(self, request, **kwargs):
         event = get_object_or_404(Event, pk = kwargs['pk'])
+        if event.create_user != request.user:
+            messages.info(self.request, 'イベント作成者以外は編集できません')
+            return redirect('login')
         event.delete()
         return redirect('product:event_list')

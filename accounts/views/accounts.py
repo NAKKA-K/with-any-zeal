@@ -8,6 +8,7 @@ from django.views.generic import ListView
 
 from product import models as product
 from accounts.models import User
+from accounts.views.LoginRequiredMessageMixin import LoginRequiredMessageMixin
 
 # Create your views here.
 class SignUpView(CreateView):
@@ -16,7 +17,7 @@ class SignUpView(CreateView):
     template_name = 'accounts/signup.html'
 
 
-class MypageView(TemplateView):
+class MypageView(LoginRequiredMessageMixin, TemplateView):
     template_name = 'accounts/mypage.html'
 
 
@@ -53,3 +54,4 @@ class ProfileView(ListView):
         context['join_events'] = product.EventJoin.objects\
                                  .filter(user = user)
         return context
+
