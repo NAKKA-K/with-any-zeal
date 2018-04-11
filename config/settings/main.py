@@ -152,11 +152,15 @@ AUTH_USER_MODEL = 'accounts.User'
 try:
     from .local_settings import *
 except ImportError:
-    print("[Info] local_settingsが存在しません")
+    print('[Info] local_settingsが存在しません')
 
 try:
     from .debug_toolbar_conf import *
 except ImportError:
-    raise ImportError("[Error] debug_toolbarのコンフィグファイルが読み込めません")
+    raise ImportError('[Error] debug_toolbarのコンフィグファイルが読み込めません')
 
+try:
+    from .mail_settings import *
+except ImportError:
+    raise ImportError('[Error] mail_settingsが読み込めません')
 
