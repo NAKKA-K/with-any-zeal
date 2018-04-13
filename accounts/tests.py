@@ -28,5 +28,6 @@ class AccounUrlAccessTest(TestCase):
         response = self.client.get(reverse('accounts:mypage'))
         self.assertEqual(response.status_code, 200)
 
-    def test_profile_access(self):
-        pass
+    def test_exits_user_profile_access(self):
+        response = self.client.get(reverse('accounts:profile', kwargs = {'user_name': self.myuser.username}))
+        self.assertEqual(response.status_code, 200)
