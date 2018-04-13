@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.http import Http404
 from django.views.generic import CreateView
@@ -8,6 +7,7 @@ from django.views.generic import ListView
 
 from product import models as product
 from accounts.models import User
+from accounts.forms import UserCreationForm
 from accounts.views.LoginRequiredMessageMixin import LoginRequiredMessageMixin
 
 # Create your views here.
