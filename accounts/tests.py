@@ -1,5 +1,6 @@
 from django.test import TestCase
 from django.urls import reverse
+from django.contrib.auth import get_user_model
 
 # Create your tests here.
 class AccounUrlAccessTest(TestCase):
@@ -17,7 +18,7 @@ class AccounUrlAccessTest(TestCase):
             'password2':'test1234',
         })
         self.assertEqual(response.status_code, 302) # Redirect to login if success
-        # TODO: assert if not exist user model
+        self.assertEqual(get_user_model().objects.all().count(), 1)
 
     def test_mypage_access(self):
         pass
