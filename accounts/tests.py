@@ -19,10 +19,11 @@ class AccounUrlAccessTest(TestCase):
         self.assertEqual(response.status_code, 302) # Redirect to login if success
         self.assertEqual(get_user_model().objects.all().count(), 2)
 
-    def test_mypage_access(self):
+    def test_not_logged_in_mypage_access(self):
         response = self.client.get(reverse('accounts:mypage'))
         self.assertEqual(response.status_code, 302)
 
+    def test_logged_in_mypage_access(self):
         self.client.force_login(self.myuser)
         response = self.client.get(reverse('accounts:mypage'))
         self.assertEqual(response.status_code, 200)
