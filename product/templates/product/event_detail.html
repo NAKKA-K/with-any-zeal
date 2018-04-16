@@ -31,10 +31,10 @@
 
     <ul class="nav nav-tabs mt-4">
         <li class="nav-item">
-            <a href="#detail_tab" class="nav-link tab-font" data-toggle="tab">Detail</a>
+            <a href="#detail_tab" class="nav-link tab-font active">Detail</a>
         </li>
         <li class="nav-item">
-            <a href="#member_tab" class="nav-link tab-font" data-toggle="tab">Members</a>
+            <a href="{% url 'product:event_join_list' event.pk %}" class="nav-link tab-font">Members</a>
         </li>
     </ul>
 
@@ -50,10 +50,6 @@
                     <p class="m-2">{{ event.readme }}</p>
                 </div>
             </div>
-        </div>
-
-        <div id="member_tab" class="tab-pane">
-            <h2>参加メンバー</h2>
         </div>
     </div>
 
