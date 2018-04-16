@@ -35,7 +35,7 @@ class EventJoin(models.Model):
     )
 
     def __str__(self):
-        return self.name
+        return self.user.username
 
 
 class EventSkillTag(models.Model):
@@ -48,5 +48,5 @@ class EventSkillTag(models.Model):
     tag = models.CharField(_('技術タグ'), max_length = 16)
 
     def __str__(self):
-        return self.name
+        return self.tag
 

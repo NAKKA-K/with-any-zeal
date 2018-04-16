@@ -31,25 +31,22 @@
 
     <ul class="nav nav-tabs mt-4">
         <li class="nav-item">
-            <a href="#detail_tab" class="nav-link tab-font active">Detail</a>
+            <a href="{% url 'product:event_detail' event.pk %}" class="nav-link tab-font">Detail</a>
         </li>
         <li class="nav-item">
-            <a href="{% url 'product:event_join_list' event.pk %}" class="nav-link tab-font">Members</a>
+            <a href="#member_tab" class="nav-link tab-font active">Members</a>
         </li>
     </ul>
 
 
     <div class="tab-content mt-4">
-        <div id="detail_tab" class="tab-pane active">
-            <p class="mb-4">{{ event.description }}</p>
-            <hr>
-
-            <div class="card mt-4">
-                <h4 class="card-header">README</h4>
-                <div class="card-text">
-                    <p class="m-2">{{ event.readme }}</p>
-                </div>
-            </div>
+        <div id="member_tab" class="tab-pane active">
+            <p>参加メンバー</p>
+            <ul>
+                {% for member in object_list %}
+                    <li>{{ member }}</li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 
