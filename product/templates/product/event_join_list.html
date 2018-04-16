@@ -41,10 +41,12 @@
 
     <div class="tab-content mt-4">
         <div id="member_tab" class="tab-pane active">
-            <h2>参加メンバー</h2>
-            {% for member in object_list %}
-                <p>{{ member }}</p>
-            {% endfor %}
+            <p>参加メンバー</p>
+            <ul>
+                {% for member in object_list %}
+                    <li>{{ member }}</li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
 
