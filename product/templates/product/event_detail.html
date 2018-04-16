@@ -28,16 +28,35 @@
         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_modal">削除</button>
     {% endif %}
 
-    <p class="mb-4">{{ event.description }}</p>
-    <hr>
 
-    <div class="card mt-4">
-        <h4 class="card-header">README</h4>
-        <div class="card-text">
-            <p class="m-2">{{ event.readme }}</p>
+    <ul class="nav nav-tabs mt-4">
+        <li class="nav-item">
+            <a href="#detail_tab" class="nav-link tab-font" data-toggle="tab">Detail</a>
+        </li>
+        <li class="nav-item">
+            <a href="#member_tab" class="nav-link tab-font" data-toggle="tab">Members</a>
+        </li>
+    </ul>
+
+
+    <div class="tab-content mt-4">
+        <div id="detail_tab" class="tab-pane active">
+            <p class="mb-4">{{ event.description }}</p>
+            <hr>
+
+            <div class="card mt-4">
+                <h4 class="card-header">README</h4>
+                <div class="card-text">
+                    <p class="m-2">{{ event.readme }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="member_tab" class="tab-pane">
+            <h2>参加メンバー</h2>
         </div>
     </div>
-    
+
 
 
     <!-- Delete modal ========================================= -->
