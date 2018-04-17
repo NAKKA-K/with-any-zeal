@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.shortcuts import redirect
 from django.views.generic import ListView
 from django.views.generic import CreateView
 
@@ -28,10 +29,23 @@ class EventJoinView(CreateView):
     model = EventJoin
 
     def get(self, request, **kwargs):
+        event_join = None
+        try:
+            event_join = EventJoin.objects.get(
+                            user = request.user,
+                            event = Event.objects.get(pk = kwargs['pk'])
+                         )
+        except:
+            pass
+
+        if event_join is not None:
+            messages.info(request, '既に参加しています')
+            return redirect('product:event_join_list', pk = kwargs['pk'])
+
         try:
             EventJoin.objects.create(user = request.user,
                                      event = Event.objects.get(pk = kwargs['pk']))
-            messages.error(request, 'イベントに参加しました')
+            messages.success(request, 'イベントに参加しました')
         except:
             messages.error(request, 'イベントへ参加できませんでした')
-        return None
+        return redirect('product:event_join_list', pk = kwargs['pk'])
