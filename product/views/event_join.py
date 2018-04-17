@@ -29,23 +29,21 @@ class EventJoinView(CreateView):
     model = EventJoin
 
     def get(self, request, **kwargs):
-        event_join = None
-        try:
-            event_join = EventJoin.objects.get(
-                            user = request.user,
-                            event = Event.objects.get(pk = kwargs['pk'])
-                         )
-        except:
-            pass
-
-        if event_join is not None:
+        event_join = EventJoin.objects.filter(
+                         user = request.user,
+                         event = Event.objects.get(pk = kwargs['pk'])
+                     )
+        if event_join.count() > 0:
             messages.info(request, '既に参加しています')
             return redirect('product:event_join_list', pk = kwargs['pk'])
 
         try:
-            EventJoin.objects.create(user = request.user,
-                                     event = Event.objects.get(pk = kwargs['pk']))
+            EventJoin.objects.create(
+                user = request.user,
+                event = Event.objects.get(pk = kwargs['pk'])
+            )
             messages.success(request, 'イベントに参加しました')
         except:
             messages.error(request, 'イベントへ参加できませんでした')
+
         return redirect('product:event_join_list', pk = kwargs['pk'])
