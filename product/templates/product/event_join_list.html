@@ -41,7 +41,7 @@
 
     <div class="tab-content mt-4">
         <div id="member_tab" class="tab-pane active">
-            <p>参加メンバー</p>
+            <p>参加メンバー<a href="{% url 'product:event_join' event.pk %}" class="btn btn-secondary btn-sm">参加</a></p>
             <ul>
                 {% for member in object_list %}
                     <li>{{ member }}</li>
