@@ -5,7 +5,6 @@
 PYTHON   = python3
 PIP      = pip3
 MANAGE   = manage.py
-DATABASE = aetam.sqlite3
 
 
 help: Makefile
@@ -15,13 +14,15 @@ install:
 	$(PIP) install -r requirements.txt
 
 run: $(DATABASE)
-	$(PYTHON) $(MANAGE) runserver
+	$(PYTHON) $(MANAGE) runserver 0.0.0.0:8000
 
 test:
-	$(PYTHON) -Wall $(MANAGE) test
+	$(PYTHON) -W default $(MANAGE) test
 
-migrate: $(DATABASE)
-$(DATABASE):
+makemigrations:
+	$(PYTHON) $(MANAGE) makemigrations
+
+migrate:
 	$(PYTHON) $(MANAGE) migrate
 
 clean:
