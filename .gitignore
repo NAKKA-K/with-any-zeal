@@ -14,7 +14,7 @@ media
 local_settings.py
 
 # [WARNING] Secret keys file
-env.py
+.env
 
 
 # pyenv / pyenv-virtualenv
