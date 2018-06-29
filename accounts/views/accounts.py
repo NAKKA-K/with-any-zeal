@@ -32,7 +32,6 @@ class ProfileView(ListView):
         try:
             user = User.objects.get(username = self.kwargs.get('user_name'))
         except User.DoesNotExist:
-            print("query raise")
             raise Http404
 
         try:
