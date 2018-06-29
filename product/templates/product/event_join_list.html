@@ -41,12 +41,26 @@
 
     <div class="tab-content mt-4">
         <div id="member_tab" class="tab-pane active">
-            <p>参加メンバー<a href="{% url 'product:event_join' event.pk %}" class="btn btn-secondary btn-sm">参加</a></p>
-            <ul>
-                {% for member in object_list %}
-                    <li>{{ member }}</li>
-                {% endfor %}
-            </ul>
+          <p>参加メンバー
+            {% if event.create_user != user and joined %}
+              <form action="{% url 'product:event_withdraw' event.pk %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-secondary btn-sm">離脱</button>
+              </form>
+            {% elif event.create_user != user %}
+              <p><a href="{% url 'product:event_join' event.pk %}" class="btn btn-primary btn-sm">参加</a></p>
+            {% endif %}
+          </p>
+
+          <ul>
+            {% for event_join in event_joins %}
+              {% if joined and joined.0 == event_join.user %}
+                <li><strong>{{ event_join }}</strong></li>
+              {% else %}
+                <li>{{ event_join }}</li>
+              {% endif %}
+            {% endfor %}
+          </ul>
         </div>
     </div>
 
