@@ -26,7 +26,7 @@ class EventJoin(models.Model):
     event = models.ForeignKey(
         Event,
         verbose_name = _('イベント'),
-        on_delete = models.CASCADE    
+        on_delete = models.CASCADE
     )
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,

@@ -10,7 +10,7 @@ from django.views.generic import DetailView
 from django.views.generic import DeleteView
 
 from product.models import Event
-from accounts.views import LoginRequiredMessageMixin 
+from accounts.views import LoginRequiredMessageMixin
 
 # Create your views here.
 
