@@ -5,6 +5,7 @@
 PYTHON   = python3
 PIP      = pip3
 MANAGE   = manage.py
+COLLECT_DIR = asset/
 
 
 help: Makefile
@@ -13,7 +14,7 @@ help: Makefile
 install:
 	$(PIP) install -r requirements.txt
 
-run: $(DATABASE)
+run:
 	$(PYTHON) $(MANAGE) runserver 0.0.0.0:8000
 
 test:
@@ -25,5 +26,9 @@ makemigrations:
 migrate:
 	$(PYTHON) $(MANAGE) migrate
 
+collect: $(COLLECT_DIR)
+	$(PYTHON) $(MANAGE) collectstatic
+
 clean:
-	-@rm $(DATABASE)
+	-@rm -r $(COLLECT_DIR)
+
