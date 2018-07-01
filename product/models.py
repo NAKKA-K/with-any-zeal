@@ -16,6 +16,7 @@ class Event(models.Model):
     description = models.TextField(_('イベント概略'))
     readme = models.TextField(_('説明'))
     published_date = models.DateTimeField(_('公開日'), null = True)
+    created_at = models.DateTimeField(_('作成日'), auto_now_add = True)
 
     def __str__(self):
         return self.name

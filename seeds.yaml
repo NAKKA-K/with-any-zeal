@@ -1,0 +1,72 @@
+- model: accounts.user
+  pk: 1
+  fields:
+    password: pbkdf2_sha256$100000$x8tOJYmVYyNX$Knk8rA81HrQC3Rgnx3mwGj5GP0yw0ZbdyJBzrzc0V/M=
+    is_superuser: true
+    username: NAKKA-K
+    email: waz@example.com
+    is_staff: true
+    is_active: true
+    date_joined: 2018-06-30 13:46+09:00
+    groups: []
+    user_permissions: []
+
+- model: accounts.user
+  pk: 2
+  fields:
+    password: pbkdf2_sha256$100000$31yOyEz8SOsz$ZASwblN3xcNVo3FcGONJQEywSVudNiPduRlAUMwC46I=
+    is_superuser: false
+    username: WaZ
+    email: waz@example.waz
+    is_staff: false
+    is_active: true
+    date_joined: 2018-06-30 13:46+09:00
+    groups: []
+    user_permissions: []
+
+
+- model: product.event
+  fields:
+    create_user: 1
+    name: OtiaiBotの作成
+    description: otiaiさんにメッセージを送ると、返信してくれるOtiaiBotを作るイベントです。
+    readme: 投稿に「otiai 」というキーワードを先頭につけた状態で投稿すると、その後ろにある言葉に関係する落合陽一さんのTwitter投稿を取得し画像とともに表示するBotを作ろうという企画です。
+    created_at: 2018-06-30 14:00+09:00
+    published_date: null
+
+- model: product.event
+  fields:
+    create_user: 1
+    name: "3DCG「バグの原因が分からなくて、ラーメン屋の店長のポーズをとるプログラマー」"
+    description: Mayaを使って3DCGで、「バグの原因が分からなくて、ラーメン屋の店長のポーズをとるプログラマー」をモデリングしました！
+    readme: Mayaを使って作ろう！
+    created_at: 2018-06-30 14:10+09:00
+    published_date: null
+
+- model: product.event
+  fields:
+    create_user: 1
+    name: webサービス「Qiita」
+    description: Qiitaは、プログラミングに関する知識を記録・共有するためのサービスを作っています
+    readme: 絵文字やシンタックスハイライトなど、豊富な機能を備えた Markdown記法 を使って、簡単に記事を投稿できます。 記事に付けたタグや、投稿したユーザ、ストック数、投稿日時の指定など、強力な検索機能で記事を探し出せます。 プログラミングに関する様々な分野のユーザ達と、知識を共有し、意見を交わすことで、より多くの知識を生み出しましょう。
+    created_at: 2018-06-30 14:30+09:00
+    published_date: null
+
+- model: product.event
+  fields:
+    create_user: 1
+    name: Reactでサービス作ってみたい
+    description: これからReactでサービス作ってみたいっていう初心者で集まっていろいろ勉強しましょう！！
+    readme: これからReactでサービス作ってみたいっていう初心者で集まっていろいろ勉強しましょう！！
+    created_at: 2018-06-30 15:30+09:00
+    published_date: null
+
+- model: product.event
+  fields:
+    create_user: 1
+    name: Reduxを勉強してみる
+    description: 「無理してReduxを使わなくてもいいよ。」って言われても、実装できるようになりたいよね
+    readme: 個人的にはjQueryは使わなくなった訳ではないです。もちろんReact.jsを使っているサービスではjQueryを使うことはないですが、コーポレートサイトなどでReactを使う必要性もないのでjQueryを使っています。住み分けができている分jQueryだけできるよりもReact.jsもできた方が仕事の幅は広がりますね。
+    created_at: 2018-06-30 16:00+09:00
+    published_date: null
+

@@ -11,9 +11,7 @@ class HomeView(ListView):
     model = Event
     template_name = 'home/index.html'
     context_object_name = 'events'
-    queryset = Event.objects.all()[:5]
+    queryset = Event.objects.all().order_by('-created_at')[:5]
 
     def get(self, request, **kwargs):
-        if request.user.is_authenticated:
-            return redirect('product:event_list')
         return super().get(request, **kwargs)
