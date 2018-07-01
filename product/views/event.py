@@ -20,6 +20,7 @@ class EventListView(ListView):
     model = Event
     template_name = 'product/event_list.hmtl'
     context_object_name = 'events'
+    queryset = Event.objects.all().order_by('-created_at')
 
 
 class EventCreateView(LoginRequiredMessageMixin, CreateView):
