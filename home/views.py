@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.views.generic import ListView
+from django.views.generic import ListView, TemplateView
 
 from product.models import Event
 
@@ -15,3 +15,8 @@ class HomeView(ListView):
 
     def get(self, request, **kwargs):
         return super().get(request, **kwargs)
+
+class ServiceAboutView(TemplateView):
+    """ """
+
+    template_name = 'home/about.html'
