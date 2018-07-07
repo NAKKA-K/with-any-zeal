@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, TemplateView
 
+from accounts.models import User
 from product.models import Event
 
 # Create your views here.
@@ -20,3 +21,9 @@ class ServiceAboutView(TemplateView):
     """ """
 
     template_name = 'home/about.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['event_num'] = Event.objects.count()
+        context['user_num'] = User.objects.count()
+        return context
