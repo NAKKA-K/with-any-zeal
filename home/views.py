@@ -31,10 +31,10 @@ class GuideLineView(TemplateView):
     template_name = 'home/guideline.html'
 
 class HelpView(TemplateView):
-    template_name = 'home/help.html'
+    template_name = 'home/help.html.haml'
 
 class PrivacyView(TemplateView):
-    template_name = 'home/privacy.html'
+    template_name = 'home/privacy.html.haml'
 
 class TermsOfServiceView(TemplateView):
     template_name = 'home/terms_of_service.html'
