@@ -5,3 +5,4 @@ django-environ
 whitenoice
 django-bootstrap4
 pyyaml
+django-hamlpy
