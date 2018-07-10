@@ -1,0 +1,70 @@
+- extends 'home_base.html'
+
+- block content
+  %header#services.masthead.text-center.text-white.d-flex
+    .container.my-auto
+      .row
+        .col-lg-10.mx-auto
+          %h1
+            %strong With any Zeal
+        .col-lg-8.mx-auto
+          %p.text-faded.mb-5 WaZは、何か熱意をもって物事に取り組むことを応援するためのサービスです
+        .col-lg-12.mx-auto
+          %hr.my-4/
+      .row
+        .col-lg-4.col-md-12.text-center
+          .service-box.mt-5.mx-auto
+            %i.fa.fa-4x.fa-newspaper-o.text-primary.mb-3.sr-icons
+            %h3.mb-3 イベント
+            %p.mb-0 イベントを作成して公開することで、自分のモチベーションを上げましょう
+        .col-lg-4.col-md-12.text-center
+          .service-box.mt-5.mx-auto
+            %i.fa.fa-4x.fa-diamond.text-primary.mb-3.sr-icons
+            %h3.mb-3 スキル
+            %p.mb-0 使用したスキルを書くことで、スキルを通じた繋がりを得ましょう
+        .col-lg-4.col-md-12.text-center
+          .service-box.mt-5.mx-auto
+            %i.fa.fa-4x.fa-heart.text-primary.mb-3.sr-icons
+            %h3.mb-3 グループ
+            %p.mb-0 みんなで同じイベントに取り組むことで、もくもく会のようなモチベーションアップを体感しましょう
+  %section#about.bg-beige
+    .container
+      %h4.text-center
+        %strong WaZ
+        の様々な利点やクリエイターのための仕組み
+      .row
+        .col-lg-2.col-md-6.text-center
+          .service-box.mt-5.mx-auto
+            %i.fa.fa-4x.fa-angle-double-up.text-primary.mb-3.sr-icons
+            %p.mb-1 モチベーションの権化
+        .col-lg-2.col-md-6.text-center
+          .service-box.mt-5.mx-auto
+            %i.fa.fa-4x.fa-globe.text-primary.mb-3.sr-icons
+            %p.mb-1 場所にとらわれず
+        .col-lg-2.col-md-6.text-center
+          .service-box.mt-5.mx-auto
+            %i.fa.fa-4x.fa-users.text-primary.mb-3.sr-icons
+            %p.mb-1 グループ
+        .col-lg-2.col-md-6.text-center
+          .service-box.mt-5.mx-auto
+            %i.fa.fa-4x.fa-address-card.text-primary.mb-3.sr-icons
+            %p.mb-1 アカウント
+        .col-lg-2.col-md-6.text-center
+          .service-box.mt-5.mx-auto
+            %i.fa.fa-4x.fa-file.text-primary.mb-3.sr-icons
+            %p.mb-1 イベントの紹介
+        .col-lg-2.col-md-6.text-center
+          .service-box.mt-5.mx-auto
+            %i.fa.fa-4x.fa-tags.text-primary.mb-3.sr-icons
+            %p.mb-1 スキルタグ
+  %section.mt-0
+    .container.text-center
+      .row
+        .col-lg-6.col-md-12
+          %h1
+            = event_num
+          %p 件のイベントが立てられました
+        .col-lg-6.col-md-12
+          %h1
+            = user_num
+          %p 人のユーザーが登録しています
