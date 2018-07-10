@@ -14,12 +14,12 @@ class HomeView(ListView):
     """ home view. recent event viewer """
 
     model = Event
-    template_name = 'home/index.html'
+    template_name = 'home/index.html.haml'
     context_object_name = 'events'
     queryset = Event.objects.all().order_by('-created_at')[:5]
 
 class ServiceAboutView(TemplateView):
-    template_name = 'home/about.html'
+    template_name = 'home/about.html.haml'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -28,7 +28,7 @@ class ServiceAboutView(TemplateView):
         return context
 
 class GuideLineView(TemplateView):
-    template_name = 'home/guideline.html'
+    template_name = 'home/guideline.html.haml'
 
 class HelpView(TemplateView):
     template_name = 'home/help.html.haml'
@@ -37,18 +37,18 @@ class PrivacyView(TemplateView):
     template_name = 'home/privacy.html.haml'
 
 class TermsOfServiceView(TemplateView):
-    template_name = 'home/terms_of_service.html'
+    template_name = 'home/terms_of_service.html.haml'
 
 class UsersView(ListView):
     model = User
     context_object_name = 'users'
     queryset = User.objects.all().order_by('-created_at')
-    template_name = 'home/users.html'
+    template_name = 'home/users.html.haml'
 
 class InquiryView(LoginRequiredMessageMixin, CreateView):
     model = Inquiry
     fields = ('title', 'body')
-    template_name = 'home/inquiry.html'
+    template_name = 'home/inquiry.html.haml'
     success_url = reverse_lazy('product:event_list')
 
     def form_valid(self, form):
@@ -59,7 +59,7 @@ class InquiryView(LoginRequiredMessageMixin, CreateView):
 class OpinionView(LoginRequiredMessageMixin, CreateView):
     model = Opinion
     fields = ('body',)
-    template_name = 'home/opinion.html'
+    template_name = 'home/opinion.html.haml'
     success_url = reverse_lazy('product:event_list')
 
     def form_valid(self, form):
