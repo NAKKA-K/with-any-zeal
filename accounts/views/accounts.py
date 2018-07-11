@@ -18,7 +18,7 @@ class SignUpView(CreateView):
 
 
 class MypageView(LoginRequiredMessageMixin, TemplateView):
-    template_name = 'accounts/mypage.html'
+    template_name = 'accounts/mypage.html.haml'
 
 
 class ProfileView(ListView):
