@@ -18,13 +18,13 @@ class SignUpView(CreateView):
 
 
 class MypageView(LoginRequiredMessageMixin, TemplateView):
-    template_name = 'accounts/mypage.html'
+    template_name = 'accounts/mypage.html.haml'
 
 
 class ProfileView(ListView):
     model = product.Event
     context_object_name = 'create_events'
-    template_name = 'accounts/profile.html'
+    template_name = 'accounts/profile.html.haml'
 
     def get_queryset(self):
         user = None

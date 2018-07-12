@@ -1,0 +1,16 @@
+- extends 'nav_base.html'
+- load static
+
+- block head
+  %link{href: "{% static 'accounts/css/mypage_fonts.css' %}", rel: "stylesheet"}
+
+- block content
+  %h1.m-4 MyPage
+  .card.border-light
+    %h5.card-header Name
+    .card-body.status_font
+      = user.username
+  .card.border-light
+    %h5.card-header Email
+    .card-body.status_font
+      = user.email
