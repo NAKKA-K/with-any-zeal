@@ -24,7 +24,7 @@ class MypageView(LoginRequiredMessageMixin, TemplateView):
 class ProfileView(ListView):
     model = product.Event
     context_object_name = 'create_events'
-    template_name = 'accounts/profile.html'
+    template_name = 'accounts/profile.html.haml'
 
     def get_queryset(self):
         user = None

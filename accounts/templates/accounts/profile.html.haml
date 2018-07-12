@@ -1,0 +1,37 @@
+- extends 'nav_base.html'
+- load static
+
+- block head
+  %link{href: "{% static 'accounts/css/profile_fonts.css' %}", rel: "stylesheet"}
+
+- block content
+  %h1.m-4
+    %span.user-font
+      = user_name
+      Profile
+  %ul.nav.nav-tabs.mb-4
+    %li.nav-item
+      %a.nav_link.tab-font{href: "#create_tab", "data-toggle": "tab"} Create
+    %li.nav-item
+      %a.nav-link.tab-font{href: "#join_tab", "data-toggle": "tab"} Join
+
+  .tab-content
+    #create_tab.tab-pane.active
+    %h2 Create Event
+    - for event in create_events
+      .card.mb-2
+        %a{href: "{% url 'product:event_detail' event.pk %}"}
+          %h4.card-header
+            = event.name
+        %p.card-body
+          = event.description
+
+  #join_tab.tab-pane
+    %h2 Join Event
+    - for event in join_events
+      .card.mb-2
+        %a{href: "{% url 'product:event_detail' event.pk %}"}
+        %h4.card-header
+          = event.name
+        %p.card-body
+          = event.description
