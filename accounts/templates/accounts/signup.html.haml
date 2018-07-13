@@ -1,0 +1,15 @@
+- extends 'base.html'
+- load bootstrap4
+
+- block content
+  .row.justify-content-center.mt-4
+    .card
+      %h1.card-header.text-center
+        Sign up
+      %form.card-block.m-4{method: "POST"}
+        - csrf_token
+        - bootstrap_form form
+        %button.btn.btn-primary.btn-lg.btn-block{type: "submit"} Sign up
+      .card-footer
+        %p
+          %a{href: "{% url 'login' %}"} 既にアカウントを持っている方はこちら
