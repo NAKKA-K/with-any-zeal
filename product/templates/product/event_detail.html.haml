@@ -1,0 +1,50 @@
+- extends 'nav_base.html'
+- load static
+
+- block head
+  %link{href: "{% static 'product/css/event_detail.css' %}", rel: "stylesheet"}
+
+
+- block content
+  %a.btn.btn-outline-secondary.btn-sm.mt-4{href: "{% url 'product:event_list' %}"} 戻る
+  %hr
+
+  %h6.mt-4
+    作成者:
+    = event.create_user
+  .mt-2.mb-2
+    %h1.inline.mr-2
+      = event.name
+
+    %p.published-status
+      - if event.published_date
+        = event.published_date
+        に公開
+      - else
+        未公開
+
+  - if user == event.create_user
+    %a.btn.btn-primary.btn-sm{href: "{% url 'product:event_update' event.pk %}"} 更新
+    %button.btn.btn-danger.btn-sm{type: "button", "data-toggle": "modal", "data-target": "#delete_modal"} 削除
+
+  %ul.nav.nav-tabs.mt-4
+    %li.nav-item
+      %a.nav-link.tab-font.active{href: "#detail_tab"} Detail
+    %li.nav-item
+      %a.nav-link.tab-font{href: "{% url 'product:event_join_list' event.pk %}"} Members
+
+  .tab-content.mt-4
+    #detail_tab.tab-pane.active
+      %p.mb-4
+        = event.description
+      %hr
+
+      .card.mt-4
+        %h4.card-header README
+        .card-text
+          %p.m-2
+            = event.readme
+
+
+  <!-- Delete modal -->
+  - include 'include/delete_modal.html'

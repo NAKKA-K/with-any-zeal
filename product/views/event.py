@@ -61,7 +61,7 @@ class EventDetailView(DetailView):
     """ Detail of Event model """
 
     model = Event
-    template_name = 'product/event_detail.html'
+    template_name = 'product/event_detail.html.haml'
     context_object_name = 'event'
 
 
