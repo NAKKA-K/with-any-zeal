@@ -28,7 +28,7 @@ class EventCreateView(LoginRequiredMessageMixin, CreateView):
 
     model = Event
     fields = ('name', 'description', 'readme')
-    template_name = 'product/event_form.html'
+    template_name = 'product/event_form.html.haml'
     success_url = reverse_lazy('product:event_list')
 
     def form_valid(self, form):
