@@ -18,7 +18,7 @@ class EventListView(ListView):
     """ List of Event model """
 
     model = Event
-    template_name = 'product/event_list.hmtl'
+    template_name = 'product/event_list.html.haml'
     context_object_name = 'events'
     queryset = Event.objects.all().order_by('-created_at')
 
@@ -28,7 +28,7 @@ class EventCreateView(LoginRequiredMessageMixin, CreateView):
 
     model = Event
     fields = ('name', 'description', 'readme')
-    template_name = 'product/event_form.html'
+    template_name = 'product/event_form.html.haml'
     success_url = reverse_lazy('product:event_list')
 
     def form_valid(self, form):
@@ -42,7 +42,7 @@ class EventUpdateView(LoginRequiredMessageMixin, UpdateView):
 
     model = Event
     fields = ('name', 'description', 'readme')
-    template_name = 'product/event_form.html'
+    template_name = 'product/event_form.html.haml'
     success_url = reverse_lazy('product:event_list')
 
     def get(self, request, **kwargs):
