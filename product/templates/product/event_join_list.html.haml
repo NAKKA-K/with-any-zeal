@@ -1,0 +1,55 @@
+- extends 'nav_base.html'
+- load static
+
+- block head
+  %link{href: "{% static 'product/css/event_detail.css' %}", rel: "stylesheet"}
+
+- block content
+  %a.btn.btn-outline-secondary.btn-sm.mt-4{href: "{% url 'product:event_list' %}"} 戻る
+  %hr
+
+  %h6.mt-4
+    作成者:
+    = event.create_user
+  .mt-2.mb-2
+    %h1.inline.mr-2
+      = event.name
+    %p.published-status
+      - if event.published_date
+        = event.published_date
+        に公開
+      - else
+        未公開
+  - if user == event.create_user
+    %a.btn.btn-primary.btn-sm{href: "{% url 'product:event_update' event.pk %}"} 更新
+    %button.btn.btn-danger.btn-sm{"data-target": "#delete_modal", "data-toggle": "modal", type: "button"} 削除
+
+  %ul.nav.nav-tabs.mt-4
+    %li.nav-item
+      %a.nav-link.tab-font{href: "{% url 'product:event_detail' event.pk %}"} Detail
+    %li.nav-item
+      %a.nav-link.tab-font.active{href: "#member_tab"} Members
+
+  .tab-content.mt-4
+    #member_tab.tab-pane.active
+      %p
+        参加メンバー
+        - if event.create_user != user and joined
+          %form{action: "{% url 'product:event_withdraw' event.pk %}", method: "POST"}
+            - csrf_token
+            %button.btn.btn-secondary.btn-sm{type: "submit"} 離脱
+        - elif event.create_user != user
+          %p
+            %a.btn.btn-primary.btn-sm{href: "{% url 'product:event_join' event.pk %}"} 参加
+      %ul
+        - for event_join in event_joins
+          - if joined and joined.0 == event_join.user
+            %li
+              %strong
+                = event_join
+          - else
+            %li
+              = event_join
+
+  -# Delete modal
+  - include 'include/delete_modal.html'

@@ -10,7 +10,7 @@ class EventJoinListView(ListView):
     """ Join list of Event """
 
     model = EventJoin
-    template_name = 'product/event_join_list.html'
+    template_name = 'product/event_join_list.html.haml'
     context_object_name = 'event_joins'
 
     def get_queryset(self):
