@@ -42,7 +42,7 @@ class EventUpdateView(LoginRequiredMessageMixin, UpdateView):
 
     model = Event
     fields = ('name', 'description', 'readme')
-    template_name = 'product/event_form.html.haml'
+    template_name = 'product/event_update.html.haml'
     success_url = reverse_lazy('product:event_list')
 
     def get(self, request, **kwargs):
