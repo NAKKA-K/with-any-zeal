@@ -47,9 +47,8 @@ class ProfileView(ListView):
         try:
             user = User.objects.get(username = self.kwargs.get('user_name'))
         except User.DoesNotExist:
-            print("context raise")
             raise Http404
-        context['user_name'] = user.username
+        context['user'] = user
         context['join_events'] = product.EventJoin.objects\
                                  .filter(user = user)
         return context
