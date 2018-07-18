@@ -42,8 +42,9 @@ class TermsOfServiceView(TemplateView):
 class UsersView(ListView):
     model = User
     context_object_name = 'users'
-    queryset = User.objects.all().order_by('-created_at')
+    queryset = User.objects.all()
     template_name = 'home/users.html.haml'
+    paginate_by = 20
 
 class InquiryView(LoginRequiredMessageMixin, CreateView):
     model = Inquiry
