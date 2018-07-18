@@ -1,0 +1,21 @@
+%nav.Page.navigation
+  %ul.pagination
+    - if page_obj.has_previous
+      %li.page-item
+        %a.page-link{href: "?page={{ page_obj.previous_page_number }}", "aria-label": "Previous"}
+          %span{"aria-hidden": "true"} &laquo;
+
+    - for link_page in page_obj.paginator.page_range
+      - if link_page == page_obj.number
+        %li.page-item.active
+          %a.page-link{href: "?page={{ link_page }}"}
+            = link_page
+      - else
+        %li.page-item
+          %a.page-link{href: "?page={{ link_page }}"}
+            = link_page
+
+    - if page_obj.has_next
+      %li.page-item
+        %a.page-link{href: "?page={{ page_obj.next_page_number }}", "aria-label": "Next"}
+          %span{"aria-hidden": "true"} &raquo;
