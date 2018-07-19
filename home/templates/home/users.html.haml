@@ -1,5 +1,15 @@
 - extends 'home_base.html'
 
 - block content
-  %h1 ユーザー一覧
-  - include 'include/in_development_screen.html.haml'
+  .container
+    %h1.mt-4.mb-4.ml-2.mr-2.no-float
+      ユーザー一覧
+
+    - for user in users
+      .card.border-secondary.mb-1
+        %a{href: "{% url 'accounts:profile' user.username %}"}
+          %p.card-header
+            = user.username
+
+    #under-paginator
+      - include 'include/paginate.html.haml'

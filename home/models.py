@@ -8,10 +8,10 @@ from django.conf import settings
 class Inquiry(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
-        verbose_name = _('ご質問作成ユーザー'),
+        verbose_name = _('お問い合わせ作成ユーザー'),
         on_delete = models.PROTECT
     )
-    title = models.CharField(_('質問タイトル'), max_length = 128)
+    title = models.CharField(_('お問い合わせタイトル'), max_length = 128)
     body = models.TextField(_('本文'))
     created_at = models.DateTimeField(_('質問作成日'), auto_now_add = True)
 
