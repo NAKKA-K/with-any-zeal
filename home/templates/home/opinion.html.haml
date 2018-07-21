@@ -1,5 +1,14 @@
 - extends 'home_base.html'
+- load bootstrap4
 
 - block content
-  %h1 ご意見
-  - include 'include/in_development_screen.html.haml'
+  .bg-primary.pt-4
+    .container.pt-4
+
+  .container.pt-4
+    %h1.pb-4 ご意見
+    %form{method: "POST"}
+      -csrf_token
+      - bootstrap_form form
+      %button.btn.btn-primary.btn-lg.float-right{type: "submit"} 送信
+    %br
