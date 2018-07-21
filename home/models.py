@@ -15,6 +15,9 @@ class Inquiry(models.Model):
     body = models.TextField(_('本文'))
     created_at = models.DateTimeField(_('質問作成日'), auto_now_add = True)
 
+    def __str__(self):
+        return self.title
+
 class Opinion(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -23,4 +26,7 @@ class Opinion(models.Model):
     )
     body = models.TextField(_('本文'))
     created_at = models.DateTimeField(_('質問作成日'), auto_now_add = True)
+
+    def __str__(self):
+        return self.body
 
