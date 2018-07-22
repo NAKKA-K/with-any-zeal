@@ -8,45 +8,45 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>WaZ</title>
+    <title>{% block title %}{% endblock title %}WaZ</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="{% static 'home/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-
-    <!-- Custom fonts for this template -->
-    <link href="{% static 'home/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-
-    <!-- Plugin CSS -->
-    <link href="{% static 'home/vendor/magnific-popup/magnific-popup.css' %}" rel="stylesheet">
-
+    <!-- Bootstrap and JQuery(plugins) -->
+    {% include 'include/bootstrap-css.html' %}
     <!-- Custom styles for this template -->
     <link href="{% static 'home/css/creative.css' %}" rel="stylesheet">
     <link href="{% static 'home/css/footer.css' %}" rel="stylesheet">
   </head>
 
   <body id="page-top">
+    <!-- Navbar -->
     {% include 'include/home/home_nav.html' %}
 
-    {% block content %}
-    {% endblock content %}
+    <div class="container">
+        {% if messages %}
+            <div class="messages mt-2">
+                {% for message in messages %}
+                    <div class="alert alert-dismissable alert-info" data-alert="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+    <!-- Main -->
+    {% block content %}{% endblock content %}
 
+    <!-- Footer -->
     <div class="container mt-4 mb-4">
       {% include 'include/home/home_footer.html' %}
     </div>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="{% static 'home/vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'home/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="{% static 'home/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
-    <script src="{% static 'home/vendor/scrollreveal/scrollreveal.min.js' %}"></script>
-    <script src="{% static 'home/vendor/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
-
+    {% include 'include/bootstrap-js.html' %}
     <!-- Custom scripts for this template -->
     <script src="{% static 'home/js/creative.min.js' %}"></script>
+    <!-- Extends script -->
+    {% block script %}{% endblock script %}
   </body>
 </html>
 
