@@ -2,30 +2,32 @@
 {% load bootstrap4 %}
 
 {% block content %}
-<div class="row justify-content-center mt-4">
+<div class="container">
+  <div class="row justify-content-center mt-4">
     <div class="col-12 col-sm-10 col-md-5">
-        <div class="card">
+      <div class="card">
 
-            <h3 class="card-header text-center">Log in</h3>
+        <h3 class="card-header text-center">Log in</h3>
 
-            <div class="card-block">
-                <form role="form" method="POST" class="m-4">
-                    {% csrf_token %}
-                    {% bootstrap_form form  %}
+        <div class="card-block">
+          <form role="form" method="POST" class="m-4">
+            {% csrf_token %}
+            {% bootstrap_form form  %}
 
-                    <input class="btn btn-primary btn-lg btn-block mt-4" type="submit" value="ログイン">
-                    {% if next %}
-                        <input type="hidden" name="next" value="{{ next }}">
-                    {% endif %}
-                </form>
+            <input class="btn btn-primary btn-lg btn-block mt-4" type="submit" value="ログイン">
+            {% if next %}
+              <input type="hidden" name="next" value="{{ next }}">
+            {% endif %}
+          </form>
 
-                <div class="card-footer">
-                    <p><a href="{% url 'accounts:signup' %}">アカウントの新規作成</a></p>
-                    <p><a href="{% url 'password_reset' %}">パスワードを忘れましたか？</a></p>
-                </div>
-            </div>
-
+          <div class="card-footer">
+            <p><a href="{% url 'accounts:signup' %}">アカウントの新規作成</a></p>
+            <p><a href="{% url 'password_reset' %}">パスワードを忘れましたか？</a></p>
+          </div>
         </div>
+
+      </div>
     </div>
+  </div>
 </div>
 {% endblock content %}

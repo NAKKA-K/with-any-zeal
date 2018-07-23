@@ -8,13 +8,15 @@ body {
   font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
 }
 
-hr {
+hr.primary {
   max-width: 50px;
   border-width: 3px;
   border-color: #F05F40;
 }
 
-hr.light {
+hr.primary-light {
+  max-width: 50px;
+  border-width: 3px;
   border-color: #fff;
 }
 
