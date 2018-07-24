@@ -11,8 +11,13 @@
 
     - for event in events
       .card.border-secondary.mb-2
-        %a{href: "{% url 'product:event_detail' event.pk %}"}
-          %h4.card-header
-            = event.name
+        .card-header
+          %a{href: "{% url 'product:event_detail' event.pk %}"}
+            %h4
+              = event.name
+          %a.text-secondary{href: "{% url 'accounts:profile' event.create_user.username %}"}
+            = event.create_user
+          &nbsp;&nbsp;
+          = event.created_at.date
         .card-body
           = event.description
