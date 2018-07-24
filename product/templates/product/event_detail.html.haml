@@ -14,7 +14,11 @@
 
     %h6.mt-4
       作成者:
-      = event.create_user
+      %a{href: "{% url 'accounts:profile' event.create_user.username %}"}
+        = event.create_user
+      &nbsp;&nbsp;
+      = event.created_at
+      作成
     .mt-2.mb-2
       %h1.inline.mr-2
         = event.name
