@@ -9,7 +9,7 @@ from django.views.generic import UpdateView
 from django.views.generic import DetailView
 from django.views.generic import DeleteView
 
-from product.models import Event
+from product.models import Event, EventJoin
 from accounts.views import LoginRequiredMessageMixin
 
 # Create your views here.
@@ -63,6 +63,11 @@ class EventDetailView(DetailView):
     model = Event
     template_name = 'product/event_detail.html.haml'
     context_object_name = 'event'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['join_num'] = EventJoin.objects.filter(event = context['event']).count
+        return context
 
 
 class EventDeleteView(LoginRequiredMessageMixin, DeleteView):
