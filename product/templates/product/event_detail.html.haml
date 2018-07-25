@@ -38,7 +38,10 @@
       %li.nav-item
         %a.nav-link.tab-font.active{href: "#detail_tab"} Detail
       %li.nav-item
-        %a.nav-link.tab-font{href: "{% url 'product:event_join_list' event.pk %}"} Members
+        %a.nav-link.tab-font{href: "{% url 'product:event_join_list' event.pk %}"}
+          Members
+          %span.badge.badge-secondary
+            = join_num
 
     .tab-content.mt-4
       #detail_tab.tab-pane.active

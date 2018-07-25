@@ -31,12 +31,18 @@
       %li.nav-item
         %a.nav-link.tab-font{href: "{% url 'product:event_detail' event.pk %}"} Detail
       %li.nav-item
-        %a.nav-link.tab-font.active{href: "#member_tab"} Members
+        %a.nav-link.tab-font.active{href: "#member_tab"}
+          Members
+          %span.badge.badge-secondary
+            = join_num
 
     .tab-content.mt-4
       #member_tab.tab-pane.active
         %p
           参加メンバー
+          &nbsp;&nbsp;
+          = join_num
+          人
           - if event.create_user != user and joined
             %form{action: "{% url 'product:event_withdraw' event.pk %}", method: "POST"}
               - csrf_token

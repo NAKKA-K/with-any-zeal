@@ -25,6 +25,9 @@ class EventJoinListView(ListView):
         context['joined'] = [event_join.user
             for event_join in context['event_joins']
             if self.request.user.username == event_join.user.username]
+        context['join_num'] = EventJoin.objects.filter(event = context['event']).count
+        return context
+
         return context
 
 
