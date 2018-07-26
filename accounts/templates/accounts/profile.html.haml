@@ -28,10 +28,10 @@
 
     #join_tab.tab-pane
       %h2 Join Event
-      - for event in join_events
+      - for join in join_events
         .card.mb-2
-          %a{href: "{% url 'product:event_detail' event.pk %}"}
+          %a{href: "{% url 'product:event_detail' join.event.pk %}"}
           %h4.card-header
-            = event.name
+            = join.event.name
           %p.card-body
-            = event.description
+            = join.event.description
