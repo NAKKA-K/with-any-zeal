@@ -21,6 +21,10 @@ class Event(models.Model):
     def __str__(self):
         return self.name
 
+    def join_event(self):
+        EventJoin.objects.create(
+            event = self,
+            user = self.create_user)
 
 class EventJoin(models.Model):
     """ イベント参加テーブル """
