@@ -33,6 +33,8 @@ class EventCreateView(LoginRequiredMessageMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.create_user = self.request.user
+        form.save()
+        form.instance.join_event() # Default join to create event
         messages.success(self.request, 'イベント: 「{}」を作成しました'.format(form.instance))
         return super().form_valid(form)
 
@@ -79,4 +81,5 @@ class EventDeleteView(LoginRequiredMessageMixin, DeleteView):
             messages.info(self.request, 'イベント作成者以外は編集できません')
             return redirect('login')
         event.delete()
+        messages.success(self.request, 'イベント: 「{}」を削除しました'.format(event.name))
         return redirect('product:event_list')
