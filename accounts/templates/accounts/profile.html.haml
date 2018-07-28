@@ -1,37 +1,38 @@
-- extends 'nav_base.html'
+- extends 'nav_base.html.haml'
 - load static
 
 - block head
   %link{href: "{% static 'accounts/css/profile_fonts.css' %}", rel: "stylesheet"}
 
 - block content
-  %h1.m-4
-    %span.user-font
-      = user.username
-       Profile
-  %ul.nav.nav-tabs.mb-4
-    %li.nav-item
-      %a.nav-link.tab-font{href: "#create_tab", "data-toggle": "tab"} Create
-    %li.nav-item
-      %a.nav-link.tab-font{href: "#join_tab", "data-toggle": "tab"} Join
+  .container.pt-4
+    %h1.m-4
+      %span.user-font
+        = user.username
+         Profile
+    %ul.nav.nav-tabs.mb-4
+      %li.nav-item
+        %a.nav-link.tab-font{href: "#create_tab", "data-toggle": "tab"} Create
+      %li.nav-item
+        %a.nav-link.tab-font{href: "#join_tab", "data-toggle": "tab"} Join
 
-  .tab-content
-    #create_tab.tab-pane.active
-      %h2 Create Event
-      - for event in create_events
-        .card.mb-2
-          %a{href: "{% url 'product:event_detail' event.pk %}"}
+    .tab-content
+      #create_tab.tab-pane.active
+        %h4 作成したイベント
+        - for event in create_events
+          .card.mb-2
+            %a{href: "{% url 'product:event_detail' event.pk %}"}
+              %h4.card-header
+                = event.name
+            %p.card-body
+              = event.description
+
+      #join_tab.tab-pane
+        %h4 参加しているイベント
+        - for join in join_events
+          .card.mb-2
+            %a{href: "{% url 'product:event_detail' join.event.pk %}"}
             %h4.card-header
-              = event.name
-          %p.card-body
-            = event.description
-
-    #join_tab.tab-pane
-      %h2 Join Event
-      - for join in join_events
-        .card.mb-2
-          %a{href: "{% url 'product:event_detail' join.event.pk %}"}
-          %h4.card-header
-            = join.event.name
-          %p.card-body
-            = join.event.description
+              = join.event.name
+            %p.card-body
+              = join.event.description

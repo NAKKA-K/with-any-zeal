@@ -1,12 +1,10 @@
-- extends 'nav_base.html'
+- extends 'nav_base.html.haml'
 - load static
 
 - block head
   %link{href: "{% static 'product/css/event_detail.css' %}", rel: "stylesheet"}
 
 - block content
-  .bg-primary.pt-4
-    .container.pt-4
   .container.pt-4
     %a.btn.btn-outline-secondary.btn-sm{href: "{% url 'product:event_list' %}"} 戻る
     %hr

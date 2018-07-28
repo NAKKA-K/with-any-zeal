@@ -1,9 +1,7 @@
-- extends 'nav_base.html'
+- extends 'nav_base.html.haml'
 - load static
 
 - block content
-  .bg-primary.pt-4
-    .container.pt-4
   .container.pt-4
     %a.float-right.btn.btn-primary{href: "{% url 'product:event_create' %}"} イベントを作成
     %h1.mt-4.mb-4.ml-2.mr-2
