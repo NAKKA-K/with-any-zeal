@@ -1,9 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.http import Http404
-from django.views.generic import CreateView
-from django.views.generic import TemplateView
-from django.views.generic import ListView
+from django.views.generic import CreateView, UpdateView, TemplateView, ListView
 
 from product.models import Event, EventJoin
 from accounts.models import User
@@ -20,6 +18,11 @@ class SignUpView(CreateView):
 class MypageView(LoginRequiredMessageMixin, TemplateView):
     template_name = 'accounts/mypage.html.haml'
 
+class UserUpdateView(LoginRequiredMessageMixin, UpdateView):
+    model = User
+    fields = ('email',)
+    template_name = 'accounts/user_update.html.haml'
+    success_url = reverse_lazy('accounts:mypage')
 
 class ProfileView(ListView):
     model = Event
