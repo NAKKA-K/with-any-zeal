@@ -8,6 +8,7 @@
   .container.pt-4
     %h1.m-4 ユーザー情報
       %a.btn.btn-primary.btn-sm{href: "{% url 'accounts:user_update' user.pk %}"} 更新
+      %a.btn.btn-primary.btn-sm{href: "{% url 'accounts:pass_change' %}"} パスワード変更
     .card.border-light
       %h5.card-header Name
       .card-body.status_font
