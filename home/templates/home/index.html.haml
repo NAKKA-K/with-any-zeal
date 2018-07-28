@@ -1,4 +1,4 @@
-- extends 'nav_base.html'
+- extends 'home_nav_base.html.haml'
 
 - block content
   %header.masthead.text-center.text-white.d-flex
@@ -23,6 +23,7 @@
             作成したイベントはみんなが見ることができ、参加することができます。
             イベントを共有することで、モチベーションの維持や作ったものをみんなに見てもらうことができます。
           %a.btn.btn-light.btn-xl.js-scroll-trigger{:href => "{% url 'accounts:signup' %}"} アカウントを登録
+
   .container.mt-4.mb-4
     %h1.mt-4.mb-4.ml-2.mr-2.no-float.text-center 最近のイベント
     - for event in events

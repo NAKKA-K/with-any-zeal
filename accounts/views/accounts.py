@@ -1,11 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.http import Http404
 from django.views.generic import CreateView
 from django.views.generic import TemplateView
 from django.views.generic import ListView
 
-from product import models as product
+from product.models import Event, EventJoin
 from accounts.models import User
 from accounts.forms import UserCreationForm
 from accounts.views.LoginRequiredMessageMixin import LoginRequiredMessageMixin
@@ -22,34 +22,24 @@ class MypageView(LoginRequiredMessageMixin, TemplateView):
 
 
 class ProfileView(ListView):
-    model = product.Event
+    model = Event
     context_object_name = 'create_events'
     template_name = 'accounts/profile.html.haml'
 
     def get_queryset(self):
-        user = None
         # is valid user
-        try:
-            user = User.objects.get(username = self.kwargs.get('user_name'))
-        except User.DoesNotExist:
-            raise Http404
+        user = get_object_or_404(User, username = self.kwargs.get('user_name'))
 
         try:
-            return product.Event.objects.filter(create_user = user)
-        except product.Event.DoesNotExist:
+            return Event.objects.filter(create_user = user)
+        except Event.DoesNotExist:
             return None
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
-        user = None
         # is valid user
-        try:
-            user = User.objects.get(username = self.kwargs.get('user_name'))
-        except User.DoesNotExist:
-            raise Http404
+        user = get_object_or_404(User, username = self.kwargs.get('user_name'))
         context['user'] = user
-        context['join_events'] = product.EventJoin.objects\
-                                 .filter(user = user)
+        context['join_events'] = EventJoin.objects.filter(user = user)
         return context
 
