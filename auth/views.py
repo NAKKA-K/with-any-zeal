@@ -36,7 +36,7 @@ class PasswordResetView(FormView):
 
         token = default_token_generator.make_token(user)
         self.request.session[INTERNAL_RESET_SESSION_TOKEN] = token
-        replace_url = reverse('auth:password_reset_confirm', args = [token])
+        replace_url = self.request.build_absolute_uri(reverse('auth:password_reset_confirm', args = [token]))
 
         email_body = ""
         with open(os.path.join(BASE_DIR, self.email_template_name)) as email_template:
