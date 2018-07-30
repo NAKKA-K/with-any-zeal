@@ -3,6 +3,7 @@ import environ
 
 env = environ.Env()
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 DEFAULT_FROM_EMAIL = env('EMAIL_NAME')
 
 EMAIL_HOST = 'smtp.gmail.com'
