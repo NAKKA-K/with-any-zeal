@@ -17,16 +17,19 @@
       &nbsp;&nbsp;
       = event.created_at
       作成
-    .mt-2.mb-2
+    .mt-2.mb-2.d-flex.flex-row
       %h1.inline.mr-2
         = event.name
 
-      %p.published-status
-        - if event.published_date
-          = event.published_date
-          に公開
-        - else
-          未公開
+      - if event.published_date
+        .published-status.badge.badge-info.align-self-center 公開
+      - else
+        .published-status.badge.badge-secondary.align-self-center 未公開
+
+    - if event.published_date
+      %p.text-muted
+        = event.published_date
+        に公開
 
     - if user == event.create_user
       %a.btn.btn-primary.btn-sm{href: "{% url 'product:event_update' event.pk %}"} 更新
