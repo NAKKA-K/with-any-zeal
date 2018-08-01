@@ -2,8 +2,6 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.http import HttpResponseForbidden
 from django.views.generic import CreateView, UpdateView, TemplateView, ListView
-from django.contrib.auth.forms import PasswordChangeForm
-from django.contrib.auth.views import PasswordChangeView
 
 from product.models import Event, EventJoin
 from accounts.models import User
@@ -20,6 +18,7 @@ class SignUpView(CreateView):
 class MypageView(LoginRequiredMessageMixin, TemplateView):
     template_name = 'accounts/mypage.html.haml'
 
+
 class UserUpdateView(LoginRequiredMessageMixin, UpdateView):
     model = User
     fields = ('email',)
@@ -31,8 +30,6 @@ class UserUpdateView(LoginRequiredMessageMixin, UpdateView):
             return HttpResponseForbidden()
         return super().get(request, **kwargs)
 
-class PassChangeView(LoginRequiredMessageMixin, PasswordChangeView):
-    success_url = reverse_lazy('accounts:mypage')
 
 class ProfileView(ListView):
     model = Event

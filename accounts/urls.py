@@ -1,5 +1,4 @@
 from django.urls import path
-from django.views.generic.base import TemplateView
 
 from accounts import views
 
@@ -10,5 +9,4 @@ urlpatterns = [
     path('mypage/', views.MypageView.as_view(), name="mypage"),
     path('users/<int:pk>/update/', views.UserUpdateView.as_view(), name="user_update"),
     path('<slug:user_name>/', views.ProfileView.as_view(), name="profile"),
-    path('password_change/', views.PassChangeView.as_view(), name="pass_change")
 ]
