@@ -2,7 +2,8 @@ django
 django-toolbelt
 django-debug-toolbar
 django-environ
-whitenoice
+whitenoise
 django-bootstrap4
 pyyaml
 django-hamlpy
+python-social-auth[django]
