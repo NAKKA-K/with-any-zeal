@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
-from django.http import Http404
+from django.http import HttpResponseForbidden
 from django.views.generic import CreateView, UpdateView, TemplateView, ListView
 
 from product.models import Event, EventJoin
@@ -18,11 +18,18 @@ class SignUpView(CreateView):
 class MypageView(LoginRequiredMessageMixin, TemplateView):
     template_name = 'accounts/mypage.html.haml'
 
+
 class UserUpdateView(LoginRequiredMessageMixin, UpdateView):
     model = User
     fields = ('email',)
     template_name = 'accounts/user_update.html.haml'
     success_url = reverse_lazy('accounts:mypage')
+
+    def get(self, request, **kwargs):
+        if request.user.id != self.kwargs['pk']:
+            return HttpResponseForbidden()
+        return super().get(request, **kwargs)
+
 
 class ProfileView(ListView):
     model = Event
