@@ -160,16 +160,14 @@ LOGOUT_REDIRECT_URL = '/'
 AUTH_USER_MODEL = 'accounts.User'
 
 AUTHENTICATION_BACKENDS = (
-    'social_core.backends.open_id.OpenIdAuth',
-    'social_core.backends.google.GoogleOpenId',
-    'social_core.backends.google.GoogleOAuth2',
-    'social_core.backends.google.GoogleOAuth',
     'social_core.backends.twitter.TwitterOAuth',
     'social_core.backends.github.GithubOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
 SOCIAL_AUTH_GITHUB_KEY = env('GITHUB_KEY')
 SOCIAL_AUTH_GITHUB_SECRET = env('GITHUB_SECRET')
+SOCIAL_AUTH_TWITTER_KEY = env('TWITTER_KEY')
+SOCIAL_AUTH_TWITTER_SECRET = env('TWITTER_SECRET')
 
 
 # Local settings
